@@ -32,7 +32,7 @@ const addresses = [{
     }
   }, {
     firstName: "Stefan",
-    lastName: "Z",
+    lastName: "Zenon",
     street: "Zwyciestwa",
     postcode: "22250",
     town: "Berlin",
@@ -79,12 +79,12 @@ async function changeAddress(addresData)  {
 
   let country = By.xpath('//*[@id="billing_country_field"]/span/span/span[1]/span/span[2]')
   await common.clickOnElement(country, "Click on country field")
-  
+
 
   let countryName = addresData.country;
   let countryNameElement = By.xpath("/html/body/span/span/span[1]/input")
   await common.sendKeysToElement(countryNameElement, countryName, (`Country input - ${countryName}`))
-    
+
   let resultListXpath = By.xpath('//ul[@id="select2-billing_country-results"]');
   await common.waitForElementVisible(resultListXpath);
 
@@ -115,7 +115,7 @@ async function changeAddress(addresData)  {
   await common.clickOnElement(save, "Click on save button")
 }
 
-async function checkText() {   
+async function checkText() {
   let textElement = By.xpath('//div[@class="woocommerce-message"]')
   const text = await common.getTextFromElement(textElement, "Looking for success message");
 
@@ -129,10 +129,10 @@ async function checkText() {
 }
 
 async function checkData(addresData) {
-  
+
   let addresses = By.linkText("Addresses");
   await common.clickOnElement(addresses, "Click on adress item")
-  await driver.sleep(sleepValue) 
+  await driver.sleep(sleepValue)
 
   let textAddress = By.xpath('//*[@id="page-7"]/div/section/div/div/div/div[1]/div[1]/address');
   const textElement = await common.getTextFromElement(textAddress, "Checking text");
@@ -151,9 +151,9 @@ driver.get("http://seleniumdemo.com/").then(async function() {
   await logIn();
   for (let i in addresses) {
     const addressData = addresses[i];
-    console.log(addressData.firstName, addressData.lastName) 
+    console.log(addressData.firstName, addressData.lastName)
     await changeAddress(addressData);
     await checkText();
     await checkData(addressData);
-  }   
+  }
 }).catch(error => {throw error});
