@@ -40,7 +40,17 @@ const addresses = [{
     country: "Germany",
     getFullAddress: function() {
       return `${this.firstName} ${this.lastName}${this.street}${this.postcode} ${this.town}${this.country}`
-    }
+    }, {
+      firstName: "Alicja",
+      lastName: "Asd",
+      street: "Zwyciestwa",
+      postcode: "22250",
+      town: "Koln",
+      phone: "00-00-000",
+      country: "Germany",
+      getFullAddress: function() {
+        return `${this.firstName} ${this.lastName}${this.street}${this.postcode} ${this.town}${this.country}`
+      }
   }]
 
 async function logIn() {
